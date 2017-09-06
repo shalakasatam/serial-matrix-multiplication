@@ -6,32 +6,39 @@
 int main(int argc, char *argv[])
 {
 
-  int s=240;
+  int size=240; //size of matrix
 
-  double a[s][s],b[s][s],c[s][s];
-  for(int i=0; i<s; i++)
+  double mat1[size][size],mat2[size][size],result[size][size];  //defining matrix 1, matrix 2 and result matrix
+  //generating matrix 1 and 2
+  for(int i=0; i<size; i++)
     {
-    for(int j=0; j<s; j++)
+    for(int j=0; j<size; j++)
       {
-        a[i][j]= rand()%5;
-        b[i][j]= rand()%5;
+        mat1[i][j]= rand()%5;
+        mat2[i][j]= rand()%5;
       }
     }
 
-  for(int k=0; k<s; k++)
-      for(int i=0; i<s; i++)
+  for(int k=0; k<size; k++)
+  {
+      for(int i=0; i<size; i++)
      {
-          c[i][k] = 0.0;
-          for(int j=0; j<s; j++)
-            c[i][k] = c[i][k] + a[i][j] * b[j][k];
+          result[i][k] = 0.0;
+          for(int j=0; j<size; j++)
+          {
+            result[i][k] = result[i][k] + mat1[i][j] * mat2[j][k];
+          }
      }
-  for(int i=0; i<s; i++)
+  }
+  
+  for(int i=0; i<size; i++)
     {
-      for(int j=0; j<s; j++)
+      for(int j=0; j<size; j++)
         {
-          printf(" 6.2%f", c[i][j]);
+          printf(" 6.2%f", result[i][j]);
         }
       printf("\n");
     }
+  
   return 0;
 }
